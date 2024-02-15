@@ -48,7 +48,7 @@ def add():
         n1=float(num1.get())
         n2=float(num2.get())
         resultN=n1+n2
-        result.insert(END, '\n' + str(resultN))
+        result.insert(END, f'\n{n1}+{n2}={str(resultN)}')
     except ValueError:
         result.insert(END, '\nError: Invalid input detected!')
 addButton = Button(
@@ -61,7 +61,7 @@ def subtract():
         n1=float(num1.get())
         n2=float(num2.get())
         resultN=n1-n2
-        result.insert(END, '\n' + str(resultN))
+        result.insert(END,  f'\n{n1}-{n2}={str(resultN)}')
     except ValueError:
         result.insert(END, '\nError: Invalid input detected!')
 subtractButton = Button(
@@ -74,7 +74,7 @@ def multiply():
         n1=float(num1.get())
         n2=float(num2.get())
         resultN=n1*n2
-        result.insert(END, '\n' + str(resultN))
+        result.insert(END,  f'\n{n1}X{n2}={str(resultN)}')
     except ValueError:
         result.insert(END, '\nError: Invalid input detected!')
 multiplicationButton = Button(
@@ -87,9 +87,9 @@ def divide():
         n1 = float(num1.get())
         n2 = float(num2.get())
         resultN = n1 / n2
-        result.insert(END, '\n' + str(resultN))
+        result.insert(END, f'\n{n1}/{n2}={str(resultN)}')
     except ZeroDivisionError:
-        result.insert(END, '\nError: Division by zero!')
+        result.insert(END, f'\nError: Division by zero!')
     except ValueError:
         result.insert(END, '\nError: Invalid input detected!')
 divideButton = Button(
@@ -102,7 +102,7 @@ def power():
         n1=float(num1.get())
         n2=float(num2.get())
         resultN=n1**n2
-        result.insert(END, '\n' + str(resultN))
+        result.insert(END,  f'\n{n1}^{n2}={str(resultN)}')
     except ValueError:
         result.insert(END, '\nError: Invalid input detected!')
 powerButton = Button(
@@ -115,7 +115,7 @@ def root():
         n1=float(num1.get())
         n2=float(num2.get())
         resultN=n1**(1/n2)
-        result.insert(END, '\n' + str(resultN))
+        result.insert(END,  f'\n{n1}^(1/{n2})={str(resultN)}')
     except ValueError:
         result.insert(END, '\nError: Invalid input detected!')
 rootButton = Button(
