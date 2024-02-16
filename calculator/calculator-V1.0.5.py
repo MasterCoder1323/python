@@ -126,5 +126,3 @@ rootButton = Button(
 btnFrame.pack(side=TOP, fill=X)
 result.pack(fill=X, side=TOP)
 window.mainloop()
-
-
