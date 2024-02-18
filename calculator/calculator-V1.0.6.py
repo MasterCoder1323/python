@@ -6,7 +6,7 @@
 from tkinter import *
 # Make Window
 window = Tk()
-window.title("MC1323 Calculator V1.0.2")
+window.title("MC1323 Calculator V1.0.6")
 window.geometry("400x500")
 # Title
 title = Label(
@@ -52,6 +52,7 @@ def add():
         result.see(END)
     except ValueError:
         result.insert(END, '\nError: Invalid input detected!')
+        result.see(END)
 addButton = Button(
     master=btnFrame,
     text='Add',
@@ -66,6 +67,7 @@ def subtract():
         result.see(END)
     except ValueError:
         result.insert(END, '\nError: Invalid input detected!')
+        result.see(END)
 subtractButton = Button(
     master=btnFrame,
     text='Subtract',
@@ -80,6 +82,7 @@ def multiply():
         result.see(END)
     except ValueError:
         result.insert(END, '\nError: Invalid input detected!')
+        result.see(END)
 multiplicationButton = Button(
     master=btnFrame,
     text='Multiply',
@@ -94,8 +97,10 @@ def divide():
         result.see(END)
     except ZeroDivisionError:
         result.insert(END, f'\nError: Division by zero!')
+        result.see(END)
     except ValueError:
         result.insert(END, '\nError: Invalid input detected!')
+        result.see(END)
 divideButton = Button(
     master=btnFrame,
     text='Divide',
@@ -110,8 +115,10 @@ def power():
         result.see(END)
     except ValueError:
         result.insert(END, '\nError: Invalid input detected!')
+        result.see(END)
     except OverflowError:
         result.insert(END, '\nError: Numbers too big!')
+        result.see(END)
 powerButton = Button(
     master=btnFrame,
     text='Exponent',
@@ -126,6 +133,7 @@ def root():
         result.see(END)
     except ValueError:
         result.insert(END, '\nError: Invalid input detected!')
+        result.see(END)
 rootButton = Button(
     master=btnFrame,
     text='Root',
