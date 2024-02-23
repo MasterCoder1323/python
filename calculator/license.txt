@@ -1,0 +1,102 @@
+ Apache License
+                           Version 2.0, January 2004
+
+                             http://www.apache.org/licenses/LICENSE-2.0
+
+   TERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION
+
+   1. Definitions.
+
+      "License" shall mean the terms and conditions for use, reproduction,
+      and distribution as defined by Sections 1 through 9 of this document.
+
+      "Licensor" shall mean the copyright owner or entity authorized by
+      the copyright owner to grant the rights and permissions herein contained.
+
+      "Licensee" shall mean the individual or Legal Entity exercising
+      permissions granted by this License.
+
+      "Contribution" shall mean any work of authorship, including
+      the source code, object code, and documentation, that is submitted
+      to the Licensor for inclusion in the Work.
+
+      "Source Code" shall mean the preferred form for making modifications,
+      including but not limited to software source code, documentation source
+      files, and configuration files.
+
+      "Object Code" shall mean any form resulting from translation
+      of the Source Code, including but not limited to compiled object code,
+      generated libraries, and machine-readable data files.
+
+      "Work" shall mean the combination of Source Code and/or Object
+      Code that is subject to this License.
+
+      "Derivative Works" shall mean any work, whether in Source Code or
+      Object Code, that is modified or derived from the Work, but not
+      including mere aggregations of the Work with other materials.
+
+      "Patent Claims" of a contributor shall mean any patent claim(s),
+      including but not limited to, any patent claim(s) that relate to the
+      Contribution(s) submitted by the contributor.
+
+      "Library" shall mean the collection of files and/or directories
+      that constitute the Work and all its associated documentation.
+
+      "Distribution" shall mean any act or attempt to offer, distribute,
+      copy, or modify the Work or a Derivative Work, including without
+      limitation, public display, lending, renting, sublicensing, or selling.
+
+   2. Grant of Copyright License.
+
+      Subject to the conditions of this License, each Contributor hereby
+      grants to You a perpetual, worldwide, non-exclusive, no-charge,
+      royalty-free, irrevocable (except as stated in this section) patent
+      license to make, use, reproduce, prepare Derivative Works of,
+      publicly display, publicly perform, sublicense, and distribute the
+      Work and such Derivative Works in Source Code or Object Code form.
+
+      The terms and conditions of this License shall apply to any Derivative
+      Work.
+
+      This License does not grant You any right to use trade names,
+      trademarks, service marks, or the names of the Licensor and its
+      Contributors to endorse or promote products or services of Your own.
+
+   3. Grant of Patent License.
+
+      Subject to the conditions of this License, each Contributor hereby
+      grants to You a perpetual, worldwide, non-exclusive, no-charge,
+      royalty-free, irrevocable (except as stated in this section) patent
+      license to make, use, reproduce, prepare Derivative Works of,
+      publicly display, publicly perform, sublicense, and distribute the
+      Work and such Derivative Works in Source Code or Object Code form.
+
+      This License does not grant You any right to use trade names,
+      trademarks, service marks, or the names of the Licensor and its
+      Contributors to endorse or promote products or services of Your own.
+
+      These patent licenses shall be automatically terminated if You bring a
+      patent infringement suit against any Licensor or Contributor (including
+      a contributor's subentity or affiliate) with respect to the Work,
+      except in circumstances where the alleged infringement was caused
+      by the Work prior to Your acquisition of the Work or where You
+      otherwise have a separate written right to use the patent claims
+      from such Licensor or Contributor.
+
+   4. Redistribution.
+
+      You may reproduce and distribute copies of the Work or Derivative
+      Works thereof in either source code or object code form, provided that
+      You meet all of the following conditions:
+
+      (a) You must retain the original copyright and license notices and
+          this License in all copies of the Work or Derivative Works.
+
+      (b) You must include a prominent statement attributing the work to
+          the original author(s).
+
+      (c) You may not use the names of the Licensor, its Contributors or
+          affiliates to endorse or promote products derived from this
+          Software without specific prior written permission.
+
+      (d) You may not distribute the Work or Derivative Works in
