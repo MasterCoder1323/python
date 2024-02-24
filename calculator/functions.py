@@ -114,3 +114,16 @@ def logarithem(n1,n2,inverse):
         return ['\n Error: Are you triing to be funny here?!', n1.get()]
     except OverflowError:
         return ['\n Error: Uh oh, your numbers are bigger than even the biggest piggy bank can handle! Try using smaller numbers or switching to a bigger bank (like a vault).?!', n1.get()]
+def FtoC(n1,n2,inverse):
+    try:
+        temp = float(n1.get())
+        if inverse.get():
+            resultN = (temp * 9 / 5) + 32
+            return [ f'\ntoF({n1.get()}°C) = {str(resultN)}', resultN]
+        else:
+           resultN = (temp - 32) * 5 / 9 
+           return [ f'\ntoC({n1.get()}°F) = {str(resultN)}', resultN]
+    except ValueError:
+        return ['\n Error: Try Putting in a number in inches!', n1.get()]
+    except OverflowError:
+        return ['\n Error: Uh oh, your numbers are bigger than even the biggest piggy bank can handle! Try using smaller numbers or switching to a bigger bank (like a vault).?!', n1.get()]
