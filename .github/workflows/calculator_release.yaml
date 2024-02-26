@@ -20,8 +20,8 @@ jobs:
             --enable-plugin=tk-inter \
             --standalone \
             --disable-console \
-            --windows-icon-from-ico=./main.ico \
-            calculator/__main__.py \
+            --windows-icon-from-ico=./calculator/main.ico \
+            calculator/main.py \
             --output-dir=dist/windows
 
       - name: Create Release (Draft)
