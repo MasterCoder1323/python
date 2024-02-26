@@ -11,24 +11,39 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - name: Install Nuitka
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'  # Specify your desired Python version
+
+      - name: Install dependencies
         run: pip install nuitka
 
-      - name: Compile __main__.py for Windows
+      - name: Compile main.py for Windows
         run: |
           nuitka \
             --enable-plugin=tk-inter \
             --standalone \
             --disable-console \
             --windows-icon-from-ico=./calculator/main.ico \
-            calculator/main.py \
-            --output-dir=dist/windows
+            --output-dir=dist/windows \
+            calculator/main.py
 
-      - name: Create Release (Draft)
-        uses: gr2m/release-action@v1.4.0  # You can use another release action as well
+      - name: Create Release
+        # Use the newer action for creating releases
+        uses: actions/create-release@v1
         with:
-          tag_name: calculator-${{ github.sha }}  # Use prefix and SHA for tag name
-          release_name: 'Windows Calculator Build (SHA: ${{ github.sha }})'
-          body: "Compiled Windows version of the calculator."
-          draft: true  # Set to false to automatically publish releases
+         tag_name: 'v${{ github.sha }}'  # Generate a release tag based on commit SHA
+         release_name: MC1323 Calculator
+         draft: false
+         prerelease: false
+         body: |
+           # Add release notes here
 
+      - name: Upload Release Assets
+        uses: actions/upload-release-asset@v1
+        with:
+          upload_url: ${{ github.event.release.upload_url }}
+          asset_path: dist/windows/*.exe
+          asset_name: calculator.exe
+          asset_content_type: application/vnd.microsoft.portable-executable
