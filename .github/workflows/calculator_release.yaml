@@ -14,14 +14,14 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
-          python-version: '3.x'  # Specify your desired Python version
+          python-version: '3.11'  # Specify your desired Python version
 
       - name: Install dependencies
         run: pip install nuitka
 
       - name: Compile main.py for Windows
         run: |
-          nuitka \
+          python -m nuitka \
             --enable-plugin=tk-inter \
             --standalone \
             --disable-console \
