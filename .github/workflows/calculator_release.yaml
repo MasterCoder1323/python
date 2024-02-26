@@ -28,7 +28,7 @@ jobs:
         uses: gr2m/release-action@v1.4.0  # You can use another release action as well
         with:
           tag_name: calculator-${{ github.sha }}  # Use prefix and SHA for tag name
-          release_name: Windows Calculator Build (SHA: ${{ github.sha }})
+          release_name: 'Windows Calculator Build (SHA: ${{ github.sha }})'
           body: "Compiled Windows version of the calculator."
           draft: true  # Set to false to automatically publish releases
 
