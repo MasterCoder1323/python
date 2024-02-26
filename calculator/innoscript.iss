@@ -2,7 +2,7 @@
 ; SEE THE DOCUMENTATION FOR DETAILS ON CREATING INNO SETUP SCRIPT FILES!
 
 #define MyAppName "MC1323 Calculator"
-#define MyAppVersion "1.1.4"        
+#define MyAppVersion "1.1.5"        
 #define MyAppPublisher "Master Coder 1323"
 #define MyAppURL "https://github.com/MasterCoder1323/python/calculator"
 #define MyAppExeName "main.exe"   
@@ -24,7 +24,7 @@ LicenseFile=C:\Users\mcode\Development\PYTHON\calculator\license.txt
 ; Remove the following line to run in administrative install mode (install for all users.)
 PrivilegesRequired=lowest
 PrivilegesRequiredOverridesAllowed=dialog
-OutputBaseFilename=installer-V1.1.4
+OutputBaseFilename=installer-V1.1.5
 Compression=lzma
 SolidCompression=yes
 WizardStyle=modern
