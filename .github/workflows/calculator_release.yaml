@@ -1,0 +1,34 @@
+name: Release Calculator
+
+on:
+  push:
+    paths:
+      - 'calculator/**'  # Trigger on pushes to calculator folder and subfolders
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Install Nuitka
+        run: pip install nuitka
+
+      - name: Compile __main__.py for Windows
+        run: |
+          nuitka \
+            --enable-plugin=tk-inter \
+            --standalone \
+            --disable-console \
+            --windows-icon-from-ico=./main.ico \
+            calculator/__main__.py \
+            --output-dir=dist/windows
+
+      - name: Create Release (Draft)
+        uses: gr2m/release-action@v1.4.0  # You can use another release action as well
+        with:
+          tag_name: calculator-${{ github.sha }}  # Use prefix and SHA for tag name
+          release_name: 'Windows Calculator Build (SHA: ${{ github.sha }})'
+          body: "Compiled Windows version of the calculator."
+          draft: true  # Set to false to automatically publish releases
+
