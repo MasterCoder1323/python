@@ -1,3 +1,4 @@
+import subprocess
 import pygame
 from pygame.sprite import Sprite
 
@@ -28,3 +29,6 @@ class Bullet(Sprite):
         self._update_pos()
         pygame.draw.rect(self.screen, self.settings["color"], self.rect)
         
+        
+if __name__ == '__main__':
+    subprocess.call(['python', 'main.py'])

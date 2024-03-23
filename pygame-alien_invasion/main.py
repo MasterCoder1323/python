@@ -3,6 +3,8 @@ import pygame
 from settings import settings
 from ship import Ship
 from bullet import Bullet
+from enemies import Enemies
+from stats import GameStats
 
 class Game:
     """Main Class to Mannage Game"""
@@ -15,6 +17,9 @@ class Game:
         # Initialize settings
         self.settings = settings()
         
+        # Stats
+        self.stats = GameStats(self)
+        
         self.screen = pygame.display.set_mode(self.settings.screen["size"])
         pygame.display.set_caption('Alien Invasion')
         
@@ -24,9 +29,26 @@ class Game:
         # Initialize bullet group
         self.bullets = pygame.sprite.Group()
         
+        # Init fire timeout variables
+        self.last_fire_time = -1000
+        
+        # Font for displaying time
+        self.font = pygame.font.SysFont(None, 24)
+        
+        # Aliens
+        self.aliens = pygame.sprite.Group()
+        self.enemies = Enemies(self)
+        self.enemies._create_fleet()
+        
+        
+        
     def _fire_bullet(self):
-        new_bullet = Bullet(self)
-        self.bullets.add(new_bullet)
+        current_time = pygame.time.get_ticks()  # Get current time in milliseconds
+
+        if (current_time - self.last_fire_time)/1000 >= self.settings.fire_timeout:  # Check if 1 second has passed
+            new_bullet = Bullet(self)
+            self.bullets.add(new_bullet)
+            self.last_fire_time = current_time
     
     def _key_down(self, event):
         if event.key == pygame.K_RIGHT:
@@ -59,6 +81,54 @@ class Game:
                 # run keyup events
                 self._key_up(event)
     
+    def _display_reload(self):
+        # Calculate time to next fire
+        current_time = pygame.time.get_ticks()  # Get current time in miliseconds
+        time_to_next_fire = max(0, self.settings.fire_timeout-((current_time - self.last_fire_time) / 1000))
+
+        # Convert time to string with one decimal place
+        time_text = f"Time to Reload: {time_to_next_fire:.1f}s"
+
+        # Render time text as surface
+        time_surface = self.font.render(time_text, True, (0,0,0))  # White text
+
+        # Get screen dimensions
+        screen_width, screen_height = self.screen.get_size()
+
+        # Place time text at bottom right corner
+        self.screen.blit(time_surface, (screen_width - time_surface.get_width() - 10, screen_height - time_surface.get_height() - 10))
+    
+    def _display_lives(self):
+        time_text = f"Lives: {self.stats.ships_left}"
+
+        # Render time text as surface
+        time_surface = self.font.render(time_text, True, (0,0,0))  # White text
+
+        # Get screen dimensions
+        screen_width, screen_height = self.screen.get_size()
+
+        # Place time text at bottom right corner
+        self.screen.blit(time_surface, (screen_width - time_surface.get_width() - 10, screen_height - time_surface.get_height() - 40))
+    
+    def _ship_hit(self):
+        """Respond to the ship being hit by an alien."""
+        if self.stats.ships_left > 0:
+            # Decrement ships_left.
+            self.stats.ships_left -= 1
+            
+            # Get rid of any remaining aliens and bullets.
+            self.aliens.empty()
+            self.bullets.empty()
+            
+            # Create a new fleet and center the ship.
+            self.enemies._create_fleet()
+            self.ship.center_ship()
+            
+            
+        else:
+            self.stats.game_active = False
+    
+    
     def _update_screen(self):
         """Update and display screen."""
         # Set background color
@@ -68,9 +138,20 @@ class Game:
         self.ship.update_pos()
         self.ship.blitme()
         
-        # Draw adn update bullet
+        # Draw and update bullet
         for bullet in self.bullets.sprites():
+            if bullet.rect.bottom <= 0:
+                self.bullets.remove(bullet)
             bullet.draw_bullet()
+        
+        self.enemies._check_bullet_alien_collisions()
+        self.enemies.aliens.draw(self.screen)  
+        
+        # Display time to reload
+        self._display_reload()
+        
+        # Display Lives
+        self._display_lives()
         
         # Display Changes
         pygame.display.flip()
@@ -80,9 +161,10 @@ class Game:
         while True:
             # Watch for keyboard and mouse events.
             self._check_events()
-                    
-            # Update the Screen
-            self._update_screen()
+            # Do other stuff
+            if self.stats.game_active:
+                self.enemies._update_aliens()
+                self._update_screen()
             
 if __name__ == '__main__':
     # Create game and then run
