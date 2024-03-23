@@ -10,3 +10,11 @@ class settings:
         }
         
         self.player_speed = 2
+        
+        # Bullet Settings
+        self.bullet = {
+            "speed": 1,
+            "width": 3,
+            "height": 15,
+            "color": (60,60,60)
+        }

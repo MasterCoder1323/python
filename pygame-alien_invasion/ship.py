@@ -26,9 +26,9 @@ class Ship:
         
     def update_pos(self):
         """Update ship position ased on movement flag."""
-        if self.moving['right']:
+        if self.moving['right'] and self.rect.x < (self.settings.screen["size"][0]-self.rect.width):
             self.rect.x += self.settings.player_speed
-        if self.moving['left']:
+        if self.moving['left'] and self.rect.x > 0:
             self.rect.x -= self.settings.player_speed
         
     def blitme(self):

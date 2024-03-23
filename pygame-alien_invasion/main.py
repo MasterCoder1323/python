@@ -2,6 +2,7 @@ import sys
 import pygame
 from settings import settings
 from ship import Ship
+from bullet import Bullet
 
 class Game:
     """Main Class to Mannage Game"""
@@ -20,7 +21,30 @@ class Game:
         # Initialize ship
         self.ship = Ship(self)
         
+        # Initialize bullet group
+        self.bullets = pygame.sprite.Group()
         
+    def _fire_bullet(self):
+        new_bullet = Bullet(self)
+        self.bullets.add(new_bullet)
+    
+    def _key_down(self, event):
+        if event.key == pygame.K_RIGHT:
+            # Move the ship to the right.
+            self.ship.moving['right'] = True
+        elif event.key == pygame.K_LEFT:
+            # Move the ship to the right.
+            self.ship.moving['left'] = True
+        elif event.key == pygame.K_SPACE:
+            self._fire_bullet()
+            
+    def _key_up(self, event):
+        if event.key == pygame.K_RIGHT:
+            # Move the ship to the right.
+            self.ship.moving['right'] = False
+        elif event.key == pygame.K_LEFT:
+            # Move the ship to the right.
+            self.ship.moving['left'] = False
         
     def _check_events(self):
         """Respond to keypresses and mose events."""
@@ -29,19 +53,11 @@ class Game:
                 pygame.quit()
                 sys.exit()
             elif event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_RIGHT:
-                    # Move the ship to the right.
-                    self.ship.moving['right'] = True
-                elif event.key == pygame.K_LEFT:
-                    # Move the ship to the right.
-                    self.ship.moving['left'] = True
+                # run keydown events
+                self._key_down(event)
             elif event.type == pygame.KEYUP:
-                if event.key == pygame.K_RIGHT:
-                    # Move the ship to the right.
-                    self.ship.moving['right'] = False
-                elif event.key == pygame.K_LEFT:
-                    # Move the ship to the right.
-                    self.ship.moving['left'] = False
+                # run keyup events
+                self._key_up(event)
     
     def _update_screen(self):
         """Update and display screen."""
@@ -51,6 +67,10 @@ class Game:
         # Draw & update ship.
         self.ship.update_pos()
         self.ship.blitme()
+        
+        # Draw adn update bullet
+        for bullet in self.bullets.sprites():
+            bullet.draw_bullet()
         
         # Display Changes
         pygame.display.flip()
